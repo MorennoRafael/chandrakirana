@@ -1,6 +1,6 @@
 import * as React from "react"
 import Navbar from "../components/navbar";
-import { FaArrowLeft, FaArrowRight, FaFacebook, FaFacebookMessenger, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaFacebookMessenger, FaInstagram } from "react-icons/fa";
 import { MdDiscount } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import {
@@ -8,17 +8,34 @@ import {
     CarouselContent,
     CarouselItem,
     CarouselNext,
+    CarouselNextPoster,
     CarouselPrevious,
+    CarouselPreviousPoster,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button"
+
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
+    const [api, setApi] = React.useState(null);
+    const [current, setCurrent] = React.useState(0);
+    const [count, setCount] = React.useState(0);
+
+    React.useEffect(() => {
+        if (!api) return;
+
+        setCount(api.scrollSnapList().length);
+        setCurrent(api.selectedScrollSnap() + 1);
+
+        api.on("select", () => {
+            setCurrent(api.selectedScrollSnap() + 1);
+        });
+    }, [api]);
 
     return (
         <div>
@@ -29,17 +46,22 @@ export default function LandingPage() {
                     <p className="text-lg font-medium">Starting 5 January 2024 Facebook login has been terminated.</p>
                 </div>
                 <div className="w-full h-[90vh] text-white">
-                    <div className="relative w-full h-full">
-                        <img src="/img/statue1.jpg" className="w-full h-full object-cover" />
-                        <div className="absolute items-center z-10 bottom-4 left-4 flex bg-black/40 font-medium text-lg">
-                            <div className="p-3 border border-white text-2xl">1 / 2</div>
-                            <div className="p-3 border border-white"><FaArrowLeft size={32} /></div>
-                            <div className="p-3 border border-white"><FaArrowRight size={32} /></div>
+                    <Carousel className="relative w-full h-full" setApi={setApi}>
+                        <CarouselContent className="w-full h-[90vh]">
+                            {Array.from({ length: 5 }).map((_, index) => (
+                                <CarouselItem key={index}>
+                                    <img src="/img/statue1.jpg" className="w-full h-full object-cover" />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <div className="absolute items-center z-10 bottom-6 left-6 flex bg-black/40 font-medium text-lg">
+                            <div className="p-3 border border-white text-3xl">{current} / {count}</div>
+                            <div className="px-3 py-3 border border-white"><CarouselPreviousPoster className="w-8 h-8" /></div>
+                            <div className="px-3 py-3 border border-white"><CarouselNextPoster className="w-8 h-8" /></div>
                         </div>
-                    </div>
+                    </Carousel>
                 </div>
             </div>
-
 
             <div className="flex flex-col w-full h-screen px-18 py-8 bg-neutral-200/50">
                 <div className="w-full">
@@ -66,28 +88,28 @@ export default function LandingPage() {
                 <h1 className="text-6xl font-medium text-[#493323] text-center font-bebasneue">Our Product / Categories</h1>
                 <div className="flex items-center justify-center gap-16 px-32 h-[20vh]">
                     <div className="flex items-center gap-2">
-                        <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
+                        <img src="/img/icon/wood.png" className="h-14 w-14" alt="" />
                         <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
-                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
+                        <img src="/img/icon/porcelain.png" className="h-14 w-14" alt="" />
+                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Porcelain</p>
                     </div>
                     <div className="flex items-center gap-2">
                         <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
-                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
+                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wayang</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <img src="/img/icon/wood.png" className="h-14 w-14" alt="" />
+                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Antique</p>
                     </div>
                     <div className="flex items-center gap-2">
                         <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
-                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
+                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Painting</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
-                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <img src="/img/icon/wayang2.png" className="h-14 w-14" alt="" />
-                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Wood</p>
+                        <img src="/img/icon/porcelain.png" className="h-14 w-14" alt="" />
+                        <p className="font-medium font-bebasneue text-neutral-500 text-3xl">Souvenir</p>
                     </div>
                 </div>
             </div>
@@ -170,12 +192,12 @@ export default function LandingPage() {
                 </div>
             </div> */}
 
-            <div className="relative flex flex-col w-full h-[920vh] bg-[url(/img/section-6.jpg)] bg-center bg-cover">
+            <div className="relative flex flex-col w-full h-[930vh] bg-[url(/img/section-6.jpg)] bg-center bg-cover">
                 {/* Overlay transparan */}
-                <div className="absolute inset-0 bg-white/30"></div>
+                <div className="absolute inset-0 bg-white/10"></div>
                 <div className="flex w-full h-screen z-10">
-                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50"></div>
+                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-10.png)] object-cover bg-center">
+                        <div className="absolute inset-0 bg-white/30"></div>
                         <div className="h-full justify-center flex flex-col gap-2 z-10">
                             <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Wood</h1>
@@ -183,60 +205,78 @@ export default function LandingPage() {
                             <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                         </div>
                     </div>
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
                                             <div className="flex flex-col w-80 gap-2 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/1.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
                 </div>
                 <div className="flex w-full h-screen bg-white z-10">
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
                                             <div className="flex flex-col w-80 gap-2 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/2.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
-                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50"></div>
+                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-9.png)] object-cover bg-center">
+                        <div className="absolute inset-0 bg-white/30"></div>
                         <div className="h-full justify-center flex flex-col gap-2 z-10 items-end">
                             <div className="bg-[#493323] pr-32 pl-4 py-1">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Porcelain</h1>
@@ -246,8 +286,8 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="flex w-full h-screen z-10">
-                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50"></div>
+                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-8.png)] object-cover bg-center">
+                        <div className="absolute inset-0 bg-white/30"></div>
                         <div className="h-full justify-center flex flex-col gap-2 z-10">
                             <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Wayang</h1>
@@ -255,60 +295,78 @@ export default function LandingPage() {
                             <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                         </div>
                     </div>
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
                                             <div className="flex flex-col w-80 gap-2 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/3.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
                 </div>
                 <div className="flex w-full h-screen bg-white z-10">
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
                                             <div className="flex flex-col w-80 gap-2 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/2.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
-                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50"></div>
+                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-3.png)] object-cover bg-center">
+                        <div className="absolute inset-0 bg-white/30"></div>
                         <div className="h-full justify-center flex flex-col gap-2 z-10 items-end">
                             <div className="bg-[#493323] pr-32 pl-4 py-1">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Antique</h1>
@@ -318,8 +376,8 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="flex w-full h-screen z-10">
-                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50"></div>
+                    <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-2.png)] object-cover bg-right">
+                        <div className="absolute inset-0 bg-white/30"></div>
                         <div className="h-full justify-center flex flex-col gap-2 z-10">
                             <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Painting</h1>
@@ -327,61 +385,79 @@ export default function LandingPage() {
                             <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                         </div>
                     </div>
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
                                             <div className="flex flex-col w-80 gap-2 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/1.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
                 </div>
                 <div className="flex w-full h-screen bg-white z-10">
-                    <div className="flex w-8/12 h-full bg-neutral-200/30">
-                        <div className="flex w-full items-center px-8 relative justify-center">
-                            <Carousel opts={{ align: "start" }} className="w-2xl">
-                                <CarouselContent>
+                    <div className="flex w-8/12 h-full bg-black/10 z-10">
+                        <div className="relative flex w-full items-center px-8 group">
+                            <Carousel className="w-2xl">
+                                <CarouselContent className="flex gap-2">
                                     {[...Array(5)].map((_, i) => (
                                         <CarouselItem key={i} className="basis-auto shrink-0">
-                                            <div className="flex flex-col w-80 gap-2 bg-white">
+                                            <div className="flex flex-col w-80 gap-1 bg-white">
                                                 <div className="flex w-80">
-                                                    <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                    <img
+                                                        src="/img/produk/3.png"
+                                                        className="w-full h-full"
+                                                        alt={`Product ${i}`}
+                                                    />
                                                 </div>
-                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                    <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                    <p className="text-neutral-500 text-base">
-                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                    </p>
+                                                <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                    <div className="flex flex-col">
+                                                        <p className="text-black text-xl">Lorem, ipsum dolor.</p>
+                                                        <p className="text-neutral-500 text-base">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                        </p>
+                                                    </div>
+                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                                 </div>
                                             </div>
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious className="left-0 -translate-x-full" />
-                                <CarouselNext className="right-0 translate-x-full" />
+
+                                {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
+                                <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                                <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
                             </Carousel>
                         </div>
                     </div>
 
                     <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center">
-                        <div className="absolute inset-0 bg-white/50" />
+                        <div className="absolute inset-0 bg-white/30" />
                         <div className="h-full justify-center flex flex-col gap-2 z-10 items-end">
                             <div className="bg-[#493323] pr-32 pl-4 py-1">
                                 <h1 className="text-6xl font-medium text-white font-bebasneue">Souvenir</h1>
@@ -391,28 +467,32 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center gap-24 w-full h-[60vh] z-10">
-                    <div className="flex flex-col gap-4">
+                <div className="relative flex justify-between items-center gap-24 w-full h-[70vh] z-10">
+                    <div className="absolute inset-0 bg-black/10" />
+                    <div className="flex flex-col gap-4 z-10">
                         <div className="bg-white pl-32 pr-4 py-1 max-w-max">
                             <h1 className="text-6xl font-medium text-[#493323] font-bebasneue">Feautured</h1>
                         </div>
                         <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Products</h1>
                     </div>
 
-                    <div className="relative pr-32 w-3xl">
+                    <div className="relative pr-32 w-3xl z-10">
                         <Carousel opts={{ align: "start" }}>
-                            <CarouselContent>
+                            <CarouselContent className="flex gap-4">
                                 {[...Array(5)].map((_, i) => (
                                     <CarouselItem key={i} className="basis-auto shrink-0">
                                         <div className="flex flex-col w-48 gap-2 bg-white">
                                             <div className="flex w-48">
-                                                <img src="/img/section-1.png" className="w-full h-full" alt={`Product ${i}`} />
+                                                <img src="/img/produk/1.png" className="w-full h-full" alt={`Product ${i}`} />
                                             </div>
-                                            <div className="flex flex-col font-bebasneue font-medium px-3 py-1">
-                                                <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                <p className="text-neutral-500 text-base">
-                                                    Lorem ipsum dolor sit amet consectetur.
-                                                </p>
+                                            <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
+                                                <div className="flex flex-col">
+                                                    <p className="text-black text-lg">Lorem, ipsum dolor.</p>
+                                                    <p className="text-neutral-500 text-sm">
+                                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
+                                                    </p>
+                                                </div>
+                                                <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D] ">See More</Button>
                                             </div>
                                         </div>
                                     </CarouselItem>
@@ -424,26 +504,26 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                <div className="relative flex w-full h-screen bg-[#493323] z-10 px-52 py-12">
-                    <div className="absolute inset-0 bg-white/10"></div>
-                    <div className="flex flex-col w-full gap-4">
-                        <h1 className="text-5xl font-medium text-white font-bebasneue text-center">Frequently Asked Questions</h1>
+                <div className="relative flex w-full h-screen z-10 px-52 py-12">
+                    <div className="absolute inset-0 bg-black/80"></div>
+                    <div className="flex flex-col w-full gap-4 bg-white p-6 rounded-md z-10 shadow">
+                        <h1 className="text-5xl font-medium text-black font-bebasneue text-center">Frequently Asked Questions</h1>
                         <Accordion type="single" collapsible className="w-full z-10">
                             <AccordionItem value="item-1">
-                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-white">Is it accessible?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-300 text-lg font-medium">
+                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-black">Is it accessible?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-lg font-medium">
                                     Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-2">
-                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-white">Is it accessible?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-300 text-lg font-medium">
+                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-black">Is it accessible?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-lg font-medium">
                                     Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
                             <AccordionItem value="item-3">
-                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-white">Is it accessible?</AccordionTrigger>
-                                <AccordionContent className="text-neutral-300 text-lg font-medium">
+                                <AccordionTrigger className="font-medium text-3xl font-bebasneue text-black">Is it accessible?</AccordionTrigger>
+                                <AccordionContent className="text-neutral-400 text-lg font-medium">
                                     Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
@@ -451,14 +531,15 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center gap-6 w-full h-[60vh] z-10">
-                    <div className="flex flex-col gap-2">
+                <div className="relative flex flex-col justify-center gap-6 w-full h-[60vh] z-10">
+                    <div className="absolute inset-0 bg-black/10" />
+                    <div className="flex flex-col gap-2 z-10">
                         <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
                             <h1 className="text-6xl font-medium text-white font-bebasneue">Connect</h1>
                         </div>
                         <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">With Us</h1>
                     </div>
-                    <div className="flex pl-32">
+                    <div className="flex pl-32 z-10">
                         <button className="flex gap-2 bg-[#91684A] px-10 py-4 rounded-sm font-medium text-lg text-white items-center">
                             <FaWhatsapp />
                             <p>Contact On Whatsapp</p>
