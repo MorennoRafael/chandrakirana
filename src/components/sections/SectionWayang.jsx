@@ -20,7 +20,6 @@ export default function SectionWayang() {
     ];
 
     const [currentIndex, setCurrentIndex] = React.useState(0);
-    const [open, setOpen] = React.useState(false);
 
     return (
         <div className="flex w-full h-screen z-10">
@@ -54,15 +53,7 @@ export default function SectionWayang() {
                                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
                                                 </p>
                                             </div>
-                                            <Dialog
-                                                open={open}
-                                                onOpenChange={(isOpen) => {
-                                                    setOpen(isOpen);
-                                                    if (!isOpen) {
-                                                        setCurrentIndex(0);
-                                                    }
-                                                }}
-                                            >
+                                            <Dialog>
                                                 <DialogTrigger asChild>
                                                     <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
                                                         See More

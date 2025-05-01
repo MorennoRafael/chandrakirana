@@ -38,7 +38,6 @@ export default function LandingPage() {
     ];
 
     const [currentIndex, setCurrentIndex] = React.useState(0);
-    const [open, setOpen] = React.useState(false);
 
     const [api, setApi] = React.useState(null);
     const [current, setCurrent] = React.useState(0);
@@ -245,15 +244,7 @@ export default function LandingPage() {
                                                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
                                                     </p>
                                                 </div>
-                                                <Dialog
-                                                    open={open}
-                                                    onOpenChange={(isOpen) => {
-                                                        setOpen(isOpen);
-                                                        if (!isOpen) {
-                                                            setCurrentIndex(0);
-                                                        }
-                                                    }}
-                                                >
+                                                <Dialog>
                                                     <DialogTrigger asChild>
                                                         <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
                                                             See More
