@@ -9,7 +9,7 @@ import {
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-export default function SectionSouvenir() {
+export default function SectionFeaturedMobile() {
     const images = [
         "/img/produk/1.png",
         "/img/produk/2.png",
@@ -20,10 +20,17 @@ export default function SectionSouvenir() {
     ];
 
     const [currentIndex, setCurrentIndex] = React.useState(0);
-
     return (
-        <div className="flex flex-col lg:flex-row w-full h-full lg:h-screen bg-white z-10" id="souvenir">
-            <div className="order-1 lg:order-none flex py-6 lg:py-0 lg:w-8/12 h-full bg-black/10 z-10">
+        <div className="flex flex-col lg:flex-row w-full h-full lg:h-screen z-10 lg:hidden">
+            <div className="relative flex flex-col lg:w-6/12 h-3/4 lg:h-full bg-black/10 bg-center z-10">
+                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10">
+                    <div className="bg-white pl-32 pr-4 py-1 max-w-max">
+                        <h1 className="text-6xl font-medium text-[#493323] font-bebasneue">Feautured</h1>
+                    </div>
+                    <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Products</h1>
+                </div>
+            </div>
+            <div className="flex py-6 lg:py-0 lg:w-8/12 h-full bg-black/10 z-10">
                 <div className="relative flex w-full items-center px-8 group">
                     <Carousel className="w-full lg:w-2xl">
                         <CarouselContent className="flex flex-row gap-2">
@@ -32,7 +39,7 @@ export default function SectionSouvenir() {
                                     <div className="flex flex-col w-44 lg:w-80 gap-2 bg-white">
                                         <div className="flex w-44 lg:w-80">
                                             <img
-                                                src="/img/produk/3.png"
+                                                src="/img/produk/1.png"
                                                 className="w-full h-full"
                                                 alt={`Product ${i}`}
                                             />
@@ -109,15 +116,6 @@ export default function SectionSouvenir() {
                     </Carousel>
                 </div>
             </div>
-            <div className="relative flex flex-col lg:w-6/12 h-3/4 lg:h-full bg-amber-200 bg-[url(/img/section-7.png)] object-cover bg-center z-10">
-                <div className="absolute inset-0 bg-white/30:"></div>
-                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10 items-end">
-                    <div className="bg-[#493323] pr-32 pl-4 py-1">
-                        <h1 className="text-6xl font-medium text-white font-bebasneue">Souvenir</h1>
-                    </div>
-                    <h1 className="pr-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
-                </div>
-            </div>
         </div>
     )
-}
+} 

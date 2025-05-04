@@ -22,24 +22,24 @@ export default function SectionWood() {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
     return (
-        <div className="flex w-full h-screen z-10">
-            <div className="relative flex flex-col w-6/12 h-full bg-amber-200 bg-[url(/img/section-10.png)] object-cover bg-center">
+        <div className="flex flex-col lg:flex-row w-full h-full lg:h-screen z-10" id="wood">
+            <div className="relative flex flex-col lg:w-6/12 h-3/4 lg:h-full bg-amber-200 bg-[url(/img/section-10.png)] object-cover bg-center z-10">
                 <div className="absolute inset-0 bg-white/30"></div>
-                <div className="h-full justify-center flex flex-col gap-2 z-10">
+                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10">
                     <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
                         <h1 className="text-6xl font-medium text-white font-bebasneue">Wood</h1>
                     </div>
                     <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                 </div>
             </div>
-            <div className="flex w-8/12 h-full bg-black/10 z-10">
+            <div className="flex py-6 lg:py-0 lg:w-8/12 h-full bg-black/10 z-10">
                 <div className="relative flex w-full items-center px-8 group">
-                    <Carousel className="w-2xl">
-                        <CarouselContent className="flex gap-2">
+                    <Carousel className="w-full lg:w-2xl">
+                        <CarouselContent className="flex flex-row gap-2">
                             {[...Array(5)].map((_, i) => (
                                 <CarouselItem key={i} className="basis-auto shrink-0">
-                                    <div className="flex flex-col w-80 gap-2 bg-white">
-                                        <div className="flex w-80">
+                                    <div className="flex flex-col w-44 lg:w-80 gap-2 bg-white">
+                                        <div className="flex w-44 lg:w-80">
                                             <img
                                                 src="/img/produk/1.png"
                                                 className="w-full h-full"
@@ -48,14 +48,14 @@ export default function SectionWood() {
                                         </div>
                                         <div className="flex flex-col font-bebasneue font-medium px-3 py-2 gap-1">
                                             <div className="flex flex-col">
-                                                <p className="text-black text-xl">Lorem, ipsum dolor.</p>
-                                                <p className="text-neutral-500 text-base">
+                                                <p className="text-black text-base lg:text-xl">Lorem, ipsum dolor.</p>
+                                                <p className="text-neutral-500 text-sm lg:text-base">
                                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, unde?
                                                 </p>
                                             </div>
                                             <Dialog>
                                                 <DialogTrigger asChild>
-                                                    <Button className="py-2 text-medium text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
+                                                    <Button className="py-2 text-medium text-base lg:text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
                                                         See More
                                                     </Button>
                                                 </DialogTrigger>
@@ -113,8 +113,8 @@ export default function SectionWood() {
                         </CarouselContent>
 
                         {/* Tombol Previous & Next di atas gambar, muncul saat hover */}
-                        <CarouselPrevious className="absolute left-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
-                        <CarouselNext className="absolute right-4 top-1/2 opacity-0 group-hover:opacity-100 transition w-8 h-8" />
+                        <CarouselPrevious className="absolute left-2 lg:left-4 top-1/2 lg:opacity-0 lg:group-hover:opacity-100 transition" />
+                        <CarouselNext className="absolute right-2 lg:right-4 top-1/2 lg:opacity-0 lg:group-hover:opacity-100 transition" />
                     </Carousel>
                 </div>
             </div>
