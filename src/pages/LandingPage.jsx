@@ -49,9 +49,9 @@ export default function LandingPage() {
                     <MdDiscount className="text-yellow-500" size={32} />
                     <p className="text-base lg:text-lg font-medium">Starting 5 January 2024 Facebook login has been terminated.</p>
                 </div>
-                <div className="w-full h-[70vh] lg:h-[90vh] text-white">
+                <div className="w-full h-[75vh] lg:h-[90vh] text-white">
                     <Carousel className="relative w-full h-full" setApi={setApi}>
-                        <CarouselContent className="w-full h-[70vh] lg:h-[90vh]">
+                        <CarouselContent className="w-full h-[75vh] lg:h-[90vh]">
                             {Array.from({ length: 5 }).map((_, index) => (
                                 <CarouselItem key={index}>
                                     <img src="/img/statue1.jpg" className="w-full h-full object-cover" />
