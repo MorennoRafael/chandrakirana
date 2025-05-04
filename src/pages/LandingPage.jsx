@@ -219,13 +219,13 @@ export default function LandingPage() {
                                     Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
-                            <AccordionItem value="item-1">
+                            <AccordionItem value="item-2">
                                 <AccordionTrigger className="font-medium text-xl lg:text-3xl font-bebasneue text-black">Is it accessible?</AccordionTrigger>
                                 <AccordionContent className="text-neutral-400 text-base lg:text-lg font-medium">
                                     Yes. It adheres to the WAI-ARIA design pattern.
                                 </AccordionContent>
                             </AccordionItem>
-                            <AccordionItem value="item-1">
+                            <AccordionItem value="item-3">
                                 <AccordionTrigger className="font-medium text-xl lg:text-3xl font-bebasneue text-black">Is it accessible?</AccordionTrigger>
                                 <AccordionContent className="text-neutral-400 text-base lg:text-lg font-medium">
                                     Yes. It adheres to the WAI-ARIA design pattern.
@@ -262,7 +262,7 @@ export default function LandingPage() {
                         <img src="/img/logo/mandiri.png" className="w-12 h-12 lg:w-14 lg:h-14" alt="" />
                     </div>
                     <div className="flex h-[2vh] bg-[#493323]"></div>
-                    <div className="flex flex-col h-full lg:h-[88vh] px-20 py-14 gap-4 lg:gap-0 justify-between bg-black">
+                    <div className="flex flex-col h-full lg:h-[88vh] px-12 py-6 lg:px-20 lg:py-14 gap-4 lg:gap-0 justify-between bg-black">
                         <div className="flex flex-col gap-4 lg:gap-0 lg:flex-row justify-between">
                             <div className="flex flex-col gap-2 lg:gap-4">
                                 <h1 className="text-4xl font-medium text-white font-bebasneue">About Ck</h1>
