@@ -46,15 +46,15 @@ export default function SectionSouvenir() {
                                             </div>
                                             <Dialog>
                                                 <DialogTrigger asChild>
-                                                    <Button className="py-2 text-medium text-base lg:text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
+                                                    <Button className="py-2 text-medium text-base md:text-lg font-normal text-white bg-[#493323] hover:bg-[#3B291D]">
                                                         See More
                                                     </Button>
                                                 </DialogTrigger>
                                                 <DialogContent className="!max-w-4xl">
                                                     <div className="flex flex-row gap-4">
-                                                        <div className="flex flex-col gap-1 w-32 lg:w-1/2">
+                                                        <div className="flex flex-col gap-1 w-32 md:w-1/2">
                                                             {/* Gambar Utama */}
-                                                            <div className="flex w-full lg:w-full lg:h-3/4">
+                                                            <div className="flex w-full md:w-full md:h-3/4">
                                                                 <img
                                                                     src={images[currentIndex]}
                                                                     className="h-full w-full object-cover rounded-md"
@@ -68,7 +68,7 @@ export default function SectionSouvenir() {
                                                                     <div
                                                                         key={i}
                                                                         onClick={() => setCurrentIndex(i)}
-                                                                        className={`w-12 h-12 lg:w-24 lg:h-24 flex-shrink-0 cursor-pointer border-2 rounded-md ${i === currentIndex ? "border-[#493323]" : "border-transparent opacity-50"
+                                                                        className={`w-12 h-12 md:w-24 md:h-24 flex-shrink-0 cursor-pointer border-2 rounded-md ${i === currentIndex ? "border-[#493323]" : "border-transparent opacity-50"
                                                                             }`}
                                                                     >
                                                                         <img
@@ -80,16 +80,16 @@ export default function SectionSouvenir() {
                                                                 ))}
                                                             </div>
                                                         </div>
-                                                        <div className="flex flex-col w-full lg:w-1/2 gap-3">
+                                                        <div className="flex flex-col w-full md:w-1/2 gap-3">
                                                             <div className="flex flex-col w-full gap-1">
-                                                                <h1 className="text-xl lg:text-4xl font-medium text-black font-bebasneue">Wayang</h1>
-                                                                <p className="text-neutral-500 text-xs lg:text-base font-medium">
+                                                                <h1 className="text-xl md:text-4xl font-medium text-black font-bebasneue">Wayang</h1>
+                                                                <p className="text-neutral-500 text-xs md:text-base font-medium">
                                                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis maiores, illum vel, obcaecati consectetur quia aliquam doloribus quisquam dolor ullam natus aliquid neque aperiam exercitationem debitis, perferendis voluptatem? Omnis, repudiandae blanditiis nihil iusto dolorem possimus.
                                                                 </p>
                                                             </div>
                                                             <div className="flex flex-col w-full gap-1">
-                                                                <h1 className="text-lg lg:text-3xl font-medium text-neutral-500 font-bebasneue border-b border-neutral-300">Detail</h1>
-                                                                <p className="text-neutral-500 text-xs lg:text-base font-medium">
+                                                                <h1 className="text-md md:text-3xl font-medium text-neutral-500 font-bebasneue border-b border-neutral-300">Detail</h1>
+                                                                <p className="text-neutral-500 text-xs md:text-base font-medium">
                                                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis maiores, illum vel, obcaecati consectetur quia aliquam doloribus quisquam dolor ullam natus aliquid neque aperiam exercitationem debitis, perferendis voluptatem? Omnis, repudiandae blanditiis nihil iusto dolorem possimus.
                                                                 </p>
                                                             </div>
