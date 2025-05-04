@@ -23,11 +23,11 @@ export default function SectionFeaturedMobile() {
     return (
         <div className="flex flex-col lg:flex-row w-full h-full lg:h-screen z-10 lg:hidden">
             <div className="relative flex flex-col lg:w-6/12 h-3/4 lg:h-full bg-black/10 bg-center z-10">
-                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10">
-                    <div className="bg-white pl-32 pr-4 py-1 max-w-max">
-                        <h1 className="text-6xl font-medium text-[#493323] font-bebasneue">Feautured</h1>
+                <div className="w-full h-full justify-center flex flex-col gap-6 lg:gap-2 z-10">
+                    <div className="bg-white text-center lg:pl-32 lg:pr-4 py-1 lg:max-w-max">
+                        <h1 className="text-6xl font-medium text-[#493323] font-bebasneue">Featured</h1>
                     </div>
-                    <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">Products</h1>
+                    <h1 className="text-center lg:text-start lg:pl-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                 </div>
             </div>
             <div className="flex py-6 lg:py-0 lg:w-8/12 h-full bg-black/10 z-10">

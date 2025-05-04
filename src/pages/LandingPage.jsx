@@ -44,14 +44,14 @@ export default function LandingPage() {
     return (
         <div>
             <Navbar />
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col h-full lg:h-screen">
                 <div className="flex w-full items-center justify-center h-[10vh] gap-4 p-8 lg:p-4 bg-neutral-300/50">
                     <MdDiscount className="text-yellow-500" size={32} />
                     <p className="text-base lg:text-lg font-medium">Starting 5 January 2024 Facebook login has been terminated.</p>
                 </div>
-                <div className="w-full h-[90vh] text-white">
+                <div className="w-full h-[70vh] lg:h-[90vh] text-white">
                     <Carousel className="relative w-full h-full" setApi={setApi}>
-                        <CarouselContent className="w-full h-[90vh]">
+                        <CarouselContent className="w-full h-[70vh] lg:h-[90vh]">
                             {Array.from({ length: 5 }).map((_, index) => (
                                 <CarouselItem key={index}>
                                     <img src="/img/statue1.jpg" className="w-full h-full object-cover" />
@@ -68,22 +68,22 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col w-full lg:h-screen px-12 py-4 lg:px-18 lg:py-8 bg-neutral-200/50" id="about">
-                <div className="w-full">
-                    <h1 className="text-9xl font-medium text-black font-bebasneue">About</h1>
+                <div className="flex flex-col w-full">
+                    <h1 className="text-7xl md:text-9xl font-medium text-black font-bebasneue">About</h1>
                 </div>
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-6 w-full h-full">
-                    <div className="flex flex-col gap-2 lg:gap-8 font-bebasneue max-w-sm">
-                        <h1 className="text-9xl text-black font-thin font-bebasneue">Us</h1>
+                    <div className="flex flex-col gap-2 lg:gap-8 font-bebasneue lg:max-w-sm">
+                        <h1 className="text-7xl md:text-9xl text-black font-thin font-bebasneue">Us</h1>
                         <p className="text-neutral-500 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit deleniti, culpa perferendis labore, in hic quasi libero explicabo accusantium quas possimus ab error. Consequatur in esse sapiente culpa, explicabo id molestiae nemo.</p>
                     </div>
-                    <div className="flex sm:w-sm lg:w-lg">
+                    <div className="flex md:mx-auto sm:w-sm md:w-md lg:w-lg">
                         <img src="/img/section-7.png" className="rounded-2xl h-full w-full object-cover" alt="" />
                     </div>
                     <div className="flex flex-col gap-2 lg:gap-8 font-medium font-bebasneue">
-                        <div className="flex lg:w-xs">
+                        <div className="flex md:mx-auto md:w-md lg:w-xs">
                             <img src="/img/section-7.png" className="rounded-2xl h-full w-full object-cover" alt="" />
                         </div>
-                        <p className="text-neutral-500 text-lg max-w-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur provident, id accusantium, hic, quasi ea odio a deleniti dicta sint numquam repellat ipsam excepturi.</p>
+                        <p className="text-neutral-500 text-lg lg:max-w-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur provident, id accusantium, hic, quasi ea odio a deleniti dicta sint numquam repellat ipsam excepturi.</p>
                     </div>
                 </div>
             </div>
@@ -238,12 +238,12 @@ export default function LandingPage() {
                 <div className="relative flex flex-col justify-center gap-6 w-full h-[60vh] z-10" id="contact">
                     <div className="absolute inset-0 bg-black/10" />
                     <div className="flex flex-col gap-2 z-10">
-                        <div className="bg-[#493323] pl-32 pr-4 py-1 max-w-max">
+                        <div className="bg-[#493323] text-center lg:pl-32 lg:pr-4 py-1 lg:max-w-max">
                             <h1 className="text-6xl font-medium text-white font-bebasneue">Connect</h1>
                         </div>
-                        <h1 className="pl-32 text-6xl font-medium text-white font-bebasneue">With Us</h1>
+                        <h1 className="text-center lg:text-start lg:pl-32 text-6xl font-medium text-white font-bebasneue">With Us</h1>
                     </div>
-                    <div className="flex pl-32 z-10" >
+                    <div className="flex justify-center lg:justify-start lg:pl-32 z-10" >
                         <button className="flex gap-2 bg-[#91684A] px-10 py-4 rounded-sm font-medium text-lg text-white items-center">
                             <FaWhatsapp />
                             <p>Contact On Whatsapp</p>

@@ -111,11 +111,11 @@ export default function SectionAntique() {
             </div>
             <div className="relative flex flex-col lg:w-6/12 h-3/4 lg:h-full bg-amber-200 bg-[url(/img/section-3.png)] object-cover bg-center z-10">
                 <div className="absolute inset-0 bg-white/30:"></div>
-                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10 items-end">
-                    <div className="bg-[#493323] pr-32 pl-4 py-1">
+                <div className="h-full justify-center flex flex-col gap-6 lg:gap-2 z-10 lg:items-end">
+                    <div className="bg-[#493323] text-center lg:pr-32 lg:pl-4 py-1 lg:max-w-max">
                         <h1 className="text-6xl font-medium text-white font-bebasneue">Antique</h1>
                     </div>
-                    <h1 className="pr-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
+                    <h1 className="text-center lg:text-start lg:pr-32 text-6xl font-medium text-white font-bebasneue">Product</h1>
                 </div>
             </div>
         </div>
