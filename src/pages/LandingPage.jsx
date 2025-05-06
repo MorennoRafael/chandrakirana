@@ -24,6 +24,7 @@ import SectionPainting from "@/components/sections/SectionPainting";
 import SectionSouvenir from "@/components/sections/SectionSouvenir";
 import SectionFeaturedMobile from "@/components/sections/SectionFeaturedMobile";
 import SectionFeaturedLarge from "@/components/sections/SectionFeaturedLarge";
+import data from "../data/data.json";
 
 export default function LandingPage() {
     const [api, setApi] = React.useState(null);
@@ -52,16 +53,16 @@ export default function LandingPage() {
                 <div className="w-full h-[75vh] lg:h-[90vh] text-white">
                     <Carousel className="relative w-full h-full" setApi={setApi}>
                         <CarouselContent className="w-full h-[75vh] lg:h-[90vh]">
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <CarouselItem key={index}>
-                                    <img src="/img/statue1.jpg" className="w-full h-full object-cover" />
+                            {data.banners.map((banner, i) => (
+                                <CarouselItem key={i}>
+                                    <img src={banner.image} className="w-full h-full object-cover" />
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <div className="absolute items-center z-10 bottom-6 left-6 flex bg-black/40 font-medium text-xs lg:text-lg">
-                            <div className="p-2 border border-white text-2xl lg:text-3xl">{current} / {count}</div>
-                            <div className="px-2 py-2 lg:px-3 lg:py-3 border border-white"><CarouselPreviousPoster className="w-8 h-8" /></div>
-                            <div className="px-2 py-2 lg:px-3 lg:py-3 border border-white"><CarouselNextPoster className="w-8 h-8" /></div>
+                        <div className="absolute items-center z-10 bottom-6 left-6 flex bg-black/40 font-medium text-xs md:text-lg">
+                            <div className="p-2 md:p-3 border border-white text-2xl md:text-3xl">{current} / {count}</div>
+                            <div className="px-2 py-2 md:px-3 md:py-3 border border-white"><CarouselPreviousPoster className="w-8 h-8" /></div>
+                            <div className="px-2 py-2 md:px-3 md:py-3 border border-white"><CarouselNextPoster className="w-8 h-8" /></div>
                         </div>
                     </Carousel>
                 </div>

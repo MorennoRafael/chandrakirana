@@ -1,0 +1,31 @@
+{
+    "banners": [
+      { "image": "/img/banner/1.png" },
+      { "image": "/img/banner/2.png" }
+    ],
+    "products": {
+      "handicrafts": [
+        {
+          "name": "Wayang Kulit",
+          "image": "/img/produk/1.png",
+          "description": "Wayang kulit khas Jawa dengan ukiran detail.",
+          "price": 120000
+        },
+        {
+          "name": "Batik Painting",
+          "image": "/img/produk/2.png",
+          "description": "Lukisan batik asli dari Yogyakarta.",
+          "price": 95000
+        }
+      ],
+      "souvenirs": [
+        {
+          "name": "Mini Borobudur",
+          "image": "/img/produk/3.png",
+          "description": "Souvenir miniatur Candi Borobudur dari batu asli.",
+          "price": 150000
+        }
+      ]
+    }
+  }
+  
